@@ -1,0 +1,173 @@
+.path-local-ultimate_market .bg-1 {
+    background-color: #1e88e5;
+}
+
+.path-local-ultimate_market .bg-2 {
+    background-color: #7460ee;
+}
+
+.path-local-ultimate_market .bg-3 {
+    background-color: #26c6da;
+}
+
+.path-local-ultimate_market .small-box {
+    border-radius: 4px;
+    position: relative;
+    display: block;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 10%);
+}
+
+.path-local-ultimate_market .small-box > .inner {
+    padding: 5px 10px;
+}
+
+.path-local-ultimate_market .small-box .inner h3 {
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    padding: 0;
+}
+
+.path-local-ultimate_market .small-box .inner p {
+    margin-bottom: 0;
+}
+
+.path-local-ultimate_market .small-box .inner h3,
+.path-local-ultimate_market .small-box .inner p {
+    z-index: 5;
+    color: #fff;
+}
+
+.path-local-ultimate_market .small-box .icon {
+    -webkit-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    position: absolute;
+    top: 5px;
+    right: 40px;
+    z-index: 0;
+    font-size: 48px;
+    color: rgba(0, 0, 0, .15);
+}
+
+.path-local-ultimate_market .form-singlebutton {
+    display: initial;
+}
+
+.path-local-ultimate_market .carousel {
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.path-local-ultimate_market .ribbon {
+    position: absolute;
+    top: 10px;
+    color: #fff;
+    background-color: var(--bs-primary);
+    padding: .5em 0.75em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+.path-local-ultimate_market .carousel .carousel-inner img {
+    border-top-left-radius: calc(0.5rem - 1px);
+    border-top-right-radius: calc(0.5rem - 1px);
+}
+
+.path-local-ultimate_market .card-footer .info {
+    display: flex;
+    align-items: center;
+}
+
+.path-local-ultimate_market .card-footer .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    background-color: #2a93d6;
+    color: #fff;
+    border-radius: 50%;
+}
+
+.path-local-ultimate_market .card-footer .price {
+    font-size: 18px;
+}
+
+.marketblock {
+    background-color: #fff;
+    border-radius: var(--bs-border-radius);
+}
+
+.marketblock .header {
+    background-color: #2a93d6;
+    color: #fff;
+    padding: .5rem 1rem;
+    border-top-left-radius: var(--bs-border-radius);
+    border-top-right-radius: var(--bs-border-radius);
+}
+
+.marketblock .header .dollar-sign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: #fff;
+    color: #2a93d6;
+    border-radius: 50%;
+}
+
+.marketblock .header .coins {
+    font-size: 1.25em;
+    margin-left: .5rem;
+    font-weight: 700;
+}
+
+.marketblock .header .coins span {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: .65em;
+}
+
+.marketblock .content {
+    padding: .5rem 1rem;
+}
+
+.marketblock .content .products .list-group-item {
+    background-color: initial;
+    border: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.marketblock .content .products .list-group-item:last-child {
+    margin-bottom: 0;
+}
+
+.marketblock .content .products .list-group-item:hover {
+    background-color: var(--bs-list-group-bg);
+}
+
+.marketblock .content .products .image {
+    width: 60px;
+    height: 60px;
+    border-radius: var(--bs-border-radius);
+    border: 1px solid #2a93d6;
+    background-position: center;
+    background-size: cover;
+}
+
+.marketblock .content .btn-market {
+    color: #fff;
+    background-color: #2a93d6;
+    border-color: #2a93d6;
+}
+
+.marketblock .content .btn-market:hover {
+    background-color: #2379af;
+    border-color: #2379af;
+}

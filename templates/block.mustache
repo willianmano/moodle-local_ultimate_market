@@ -1,0 +1,43 @@
+<div class="marketblock mt-4">
+    <div class="header">
+        <h3 class="mb-0">{{#str}}mybalance, local_ultimate{{/str}}</h3>
+
+        <div class="d-flex align-items-center mt-2">
+            <div class="dollar-sign"><i class="fa fa-dollar-sign"></i></div>
+            <div class="coins">{{coins}} <span>{{#str}}coins, local_ultimate{{/str}}</span></div>
+        </div>
+    </div>
+
+    <div class="content">
+        <p class="mb-0"><i style="color: #2a93d6;" class="fa fa-star-o"></i> {{#str}}market_highlights, local_ultimate{{/str}}</p>
+
+        <div class="list-group products mt-2">
+            {{#products}}
+                <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                    <div class="d-flex w-100">
+                            {{#images.0}}
+                                <div class="image" style="background-image: url({{fileurl}})">
+                            {{/images.0}}
+                        </div>
+                        <div class="info ml-1">
+                            <div class="name">
+                                {{name}}
+                            </div>
+                            <div class="productinfo">
+                                <div class="price">
+                                    <i style="color: #2a93d6;" class="fa fa-dollar-sign"></i> {{price}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {{/products}}
+        </div>
+
+        <div class="mt-4">
+            <a class="btn btn-market btn-block" href="{{config.wwwroot}}/local/ultimate_market/index.php?id={{course}}">
+                {{#str}}gotomarket, local_ultimate_market{{/str}}
+            </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<?php
+
+namespace local_ultimate_market\output;
+
+defined('MOODLE_INTERNAL') || die();
+
+use local_ultimate_market\local\entities\product;
+use local_ultimate_market\util\user;
+use renderable;
+use templatable;
+use renderer_base;
+use local_ultimate_market\local\entities\order;
+
+/**
+ * ultimate_market renderable class.
+ *
+ * @copyright   2022 World Bank Group <https://worldbank.org>
+ * @author      Willian Mano <willianmanoaraujo@gmail.com>
+ */
+class courseorders implements renderable, templatable {
+    protected $context;
+    protected $course;
+
+    public function __construct($context, $course) {
+        $this->context = $context;
+        $this->course = $course;
+    }
+
+    public function export_for_template(renderer_base $output) {
+        $orderentity = new order();
+        $productentity = new product();
+
+        $orders = $orderentity->get_orders_with_users_data($this->course->id);
+
+        if ($orders) {
+            $userutil = new user();
+
+            foreach ($orders as $order) {
+                $order->image = current($productentity->get_images($order->productid));
+                $order->humantimecreated = userdate($order->timecreated);
+                $order->fullname = fullname($order);
+                $order->userimage = $userutil->get_user_avatar_or_image($order->userid);
+                $order->usergroups = $userutil->get_user_groups_names($this->course->id, $order->userid);
+            }
+        }
+
+        return [
+            'courseid' => $this->course->id,
+            'orders' => $orders,
+            'hasorders' => !empty($orders)
+        ];
+    }
+}

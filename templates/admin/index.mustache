@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="small-box bg-2">
+            <div class="inner">
+                <h3>{{total_orders}}</h3>
+
+                <p>{{#str}}orders, local_ultimate_market{{/str}}</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-shopping-bag"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="small-box bg-1">
+            <div class="inner">
+                <h3>{{total_products}}</h3>
+
+                <p>{{#str}}products, local_ultimate_market{{/str}}</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-list"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="small-box bg-3">
+            <div class="inner">
+                <h3>{{total_categories}}</h3>
+
+                <p>{{#str}}categories, local_ultimate_market{{/str}}</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-6">
+        {{{chart_line}}}
+    </div>
+    <div class="col-md-6">
+        {{{chart_pie}}}
+    </div>
+</div>
