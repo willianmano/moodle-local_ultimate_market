@@ -47,6 +47,17 @@ $string['type_digital'] = 'Digital';
 $string['type_digital_file'] = 'Digital downloadable file';
 $string['type_physical'] = 'Physical';
 
+$string['status'] = 'Status';
+$string['enabled'] = 'Enabled';
+$string['disabled'] = 'Disabled';
+$string['enable'] = 'Enable';
+$string['disable'] = 'Disable';
+$string['toggleenabled_confirm_title'] = 'Are you sure?';
+$string['toggleenabled_enable_confirm_msg'] = 'This product will become visible and available for purchase.';
+$string['toggleenabled_disable_confirm_msg'] = 'This product will be hidden and users will not be able to purchase it.';
+$string['productenabled_success'] = 'Product successfuly enabled';
+$string['productdisabled_success'] = 'Product successfuly disabled';
+
 $string['confirm_yes'] = 'Yes, I want it!';
 $string['confirm_no'] = 'Cancel';
 
@@ -75,6 +86,7 @@ $string['errorbuy'] = 'Something went wrong while trying to finish your purchase
 // Exceptions strings.
 $string['outofstock'] = 'Out of stock';
 $string['product_outofstock'] = 'Sorry. This product is out of stock.';
+$string['product_disabled'] = 'Sorry. This product is not available for purchase.';
 $string['exclusivecourseproduct'] = 'Exclusive Course Product';
 $string['order_limitperuser'] = 'You reach out the purchases limit for this product';
 

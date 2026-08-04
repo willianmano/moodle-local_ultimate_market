@@ -19,6 +19,9 @@ class product extends base {
     const TYPE_DIGITAL_FILE = 2;
     const TYPE_PHYSICAL = 3;
 
+    const ENABLED = 1;
+    const DISABLED = 0;
+
     protected $table = 'ultimate_market_products';
 
     public function create($data) {
@@ -155,10 +158,11 @@ class product extends base {
         $sql = 'SELECT p.*, c.shortname as coursename
                 FROM {ultimate_market_products} p
                 LEFT JOIN {course} c ON c.id = p.courseid
-                WHERE courseid is null OR courseid = :courseid
+                WHERE (courseid is null OR courseid = :courseid)
+                AND p.enabled = :enabled
                 ORDER BY p.id DESC';
 
-        $records = $DB->get_records_sql($sql, ['courseid' => $courseid]);
+        $records = $DB->get_records_sql($sql, ['courseid' => $courseid, 'enabled' => self::ENABLED]);
 
         if (!$records) {
             return [];
@@ -178,7 +182,8 @@ class product extends base {
         $sql = 'SELECT p.*, c.shortname as coursename
                 FROM {ultimate_market_products} p
                 LEFT JOIN {course} c ON c.id = p.courseid
-                WHERE courseid is null OR courseid = :courseid';
+                WHERE (courseid is null OR courseid = :courseid)
+                AND p.enabled = :enabled';
 
         if ($onlyonstock) {
             $sql .= ' AND p.stock > 0';
@@ -190,7 +195,7 @@ class product extends base {
             $sql .= ' LIMIT ' . $limit;
         }
 
-        $records = $DB->get_records_sql($sql, ['courseid' => $courseid]);
+        $records = $DB->get_records_sql($sql, ['courseid' => $courseid, 'enabled' => self::ENABLED]);
 
         if (!$records) {
             return [];
@@ -202,6 +207,31 @@ class product extends base {
         }
 
         return array_values($records);
+    }
+
+    public function toggle_enabled($id) {
+        global $DB, $CFG;
+
+        try {
+            $product = $DB->get_record($this->table, ['id' => $id], '*', MUST_EXIST);
+
+            $product->enabled = $product->enabled == self::ENABLED ? self::DISABLED : self::ENABLED;
+            $product->timemodified = time();
+
+            $DB->update_record($this->table, $product);
+
+            if ($product->enabled == self::ENABLED) {
+                return [true, get_string('productenabled_success', 'local_ultimate_market')];
+            }
+
+            return [true, get_string('productdisabled_success', 'local_ultimate_market')];
+        } catch (\Exception $e) {
+            if ($CFG->debugdisplay) {
+                return [false, $e->getMessage()];
+            }
+
+            return [false, get_string('something_went_wrong', 'local_ultimate_market')];
+        }
     }
 
     public function instock($product) {

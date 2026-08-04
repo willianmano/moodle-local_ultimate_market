@@ -48,10 +48,27 @@
                                 <span class="badge badge-primary">{{#str}}course, local_ultimate_market{{/str}}: {{coursename}}</span>
                             </div>
                         {{/coursename}}
+                        <div class="d-block mt-1">
+                            {{#enabled}}
+                                <span class="badge badge-success">{{#str}}enabled, local_ultimate_market{{/str}}</span>
+                            {{/enabled}}
+                            {{^enabled}}
+                                <span class="badge badge-secondary">{{#str}}disabled, local_ultimate_market{{/str}}</span>
+                            {{/enabled}}
+                        </div>
                     </div>
                     <div class="card-footer">
                         <a href="{{config.wwwroot}}/local/ultimate_market/admin/products.php?action=update&id={{id}}" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
-                        <form action="{{config.wwwroot}}/local/ultimate_market/admin/products.php?action=delete" method="POST" class="form-singlebutton">
+                        <form action="{{config.wwwroot}}/local/ultimate_market/admin/products.php?action=toggleenabled" method="POST" class="form-singlebutton d-inline">
+                            <input type="hidden" name="id" value="{{id}}">
+                            {{#enabled}}
+                                <button class="btn-toggleenabled btn btn-sm btn-secondary" data-enabled="1"><i class="fa fa-eye-slash"></i> {{#str}}disable, local_ultimate_market{{/str}}</button>
+                            {{/enabled}}
+                            {{^enabled}}
+                                <button class="btn-toggleenabled btn btn-sm btn-success" data-enabled="0"><i class="fa fa-eye"></i> {{#str}}enable, local_ultimate_market{{/str}}</button>
+                            {{/enabled}}
+                        </form>
+                        <form action="{{config.wwwroot}}/local/ultimate_market/admin/products.php?action=delete" method="POST" class="form-singlebutton d-inline">
                             <input type="hidden" name="id" value="{{id}}">
                             <button class="btn-delete btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></button>
                         </form>
@@ -64,7 +81,7 @@
 
 {{#js}}
     require(['jquery', 'local_ultimate_market/sweetalert'], function($, Swal) {
-        $("body").on("click", ".btn-danger", function(event) {
+        $("body").on("click", ".btn-delete", function(event) {
             event.preventDefault();
 
             var button = $(this);
@@ -72,6 +89,35 @@
             Swal.fire({
                 title: '{{#str}}deleteitem_confirm_title, local_ultimate_market{{/str}}',
                 text: '{{#str}}deleteitem_confirm_msg, local_ultimate_market{{/str}}',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: '{{#str}}confirm_yes, local_ultimate_market{{/str}}',
+                cancelButtonText: '{{#str}}confirm_no, local_ultimate_market{{/str}}'
+            }).then(function(result) {
+                if (result.value) {
+                    const form = button.closest("form");
+
+                    form.append('<input type="hidden" name="sesskey" value="{{config.sesskey}}">');
+
+                    form.submit();
+                }
+            });
+        });
+
+        $("body").on("click", ".btn-toggleenabled", function(event) {
+            event.preventDefault();
+
+            var button = $(this);
+
+            var enabling = button.data("enabled") == 0;
+
+            Swal.fire({
+                title: '{{#str}}toggleenabled_confirm_title, local_ultimate_market{{/str}}',
+                text: enabling ?
+                    '{{#str}}toggleenabled_enable_confirm_msg, local_ultimate_market{{/str}}' :
+                    '{{#str}}toggleenabled_disable_confirm_msg, local_ultimate_market{{/str}}',
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',

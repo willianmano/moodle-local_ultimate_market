@@ -11,8 +11,8 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'local_ultimate_market';
-$plugin->release = '0.6.0';
-$plugin->version = 2022110500;
+$plugin->release = '0.7.0';
+$plugin->version = 2026080400;
 $plugin->requires = 2022041200;
 $plugin->maturity = MATURITY_STABLE;
 $plugin->dependencies = [

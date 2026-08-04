@@ -10,6 +10,7 @@ use local_ultimate_market\local\entities\order;
 use local_ultimate_market\local\exceptions\not_enrolled;
 use local_ultimate_market\local\exceptions\order_limitperuser;
 use local_ultimate_market\local\entities\product;
+use local_ultimate_market\local\exceptions\product_disabled;
 use local_ultimate_market\local\exceptions\product_outofstock;
 use moodle_url;
 
@@ -30,6 +31,10 @@ class seller {
         $productentity = new product();
 
         $product = $productentity->find($id);
+
+        if ($product->enabled == product::DISABLED) {
+            throw new product_disabled('product_disabled', $courseid);
+        }
 
         if (!$productentity->instock($product)) {
             throw new product_outofstock('product_outofstock', $courseid);

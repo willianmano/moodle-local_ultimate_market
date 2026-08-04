@@ -84,6 +84,22 @@ if ($action == 'delete') {
     }
 }
 
+if ($action == 'toggleenabled') {
+    if (!confirm_sesskey()) {
+        redirect($redirecturl, get_string('invaliddata', 'error'), null, \core\output\notification::NOTIFY_ERROR);
+    }
+
+    $id = required_param('id', PARAM_INT);
+
+    list($success, $message) = $productentity->toggle_enabled($id);
+
+    if ($success) {
+        redirect($redirecturl, $message, null, \core\output\notification::NOTIFY_SUCCESS);
+    }
+
+    redirect($redirecturl, $message, null, \core\output\notification::NOTIFY_ERROR);
+}
+
 $form = new \local_ultimate_market\forms\admin\products($url, $dbproduct);
 
 if ($form->is_cancelled()) {
