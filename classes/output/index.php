@@ -4,6 +4,7 @@ namespace local_ultimate_market\output;
 
 defined('MOODLE_INTERNAL') || die();
 
+use local_ultimate\util\coin;
 use local_ultimate_market\local\entities\product;
 use renderable;
 use templatable;
@@ -26,9 +27,11 @@ class index implements renderable, templatable {
 
     public function export_for_template(renderer_base $output) {
         $productentity = new product();
+        $coinutil = new coin();
 
         return [
             'courseid' => $this->courseid,
+            'coins' => $coinutil->get_user_coins(),
             'products' => $productentity->get_site_and_course_products($this->courseid)
         ];
     }

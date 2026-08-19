@@ -1,4 +1,12 @@
-<div class="header text-right mb-3">
+<div class="header d-flex align-items-center justify-content-between mb-3">
+    <div class="mybalance d-flex align-items-center">
+        <div class="dollar-sign"><i class="fa fa-dollar-sign"></i></div>
+        <div class="coins">
+            <span class="label">{{#str}}mybalance, local_ultimate{{/str}}</span>
+            {{coins}} <span>{{#str}}coins, local_ultimate{{/str}}</span>
+        </div>
+    </div>
+
     <a href="{{config.wwwroot}}/local/ultimate_market/mypurchases.php?id={{courseid}}" class="btn btn-info"><i class="fa fa-shopping-bag"></i> {{#str}}mypurchases, local_ultimate_market{{/str}}</a>
 </div>
 

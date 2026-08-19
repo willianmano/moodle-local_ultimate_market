@@ -110,7 +110,8 @@
     border-top-right-radius: var(--bs-border-radius);
 }
 
-.marketblock .header .dollar-sign {
+.marketblock .header .dollar-sign,
+.mybalance .dollar-sign {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,16 +122,33 @@
     border-radius: 50%;
 }
 
-.marketblock .header .coins {
+.marketblock .header .coins,
+.mybalance .coins {
     font-size: 1.25em;
     margin-left: .5rem;
     font-weight: 700;
 }
 
-.marketblock .header .coins span {
+.marketblock .header .coins span,
+.mybalance .coins span {
     text-transform: uppercase;
     color: #fff;
     font-size: .65em;
+}
+
+.mybalance {
+    background-color: #2a93d6;
+    color: #fff;
+    padding: .5rem 1rem;
+    border-radius: var(--bs-border-radius);
+}
+
+.mybalance .coins .label {
+    display: block;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: .65em;
+    font-weight: 400;
 }
 
 .marketblock .content {
