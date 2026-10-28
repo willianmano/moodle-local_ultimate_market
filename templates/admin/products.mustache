@@ -10,7 +10,7 @@
         {{#products}}
             <div class="col-md-4">
                 <div class="card shadow-none border my-2">
-                    <div id="images-{{id}}" class="carousel slide" data-ride="carousel">
+                    <div id="images-{{id}}" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             {{#images}}
                                 <div class="carousel-item {{#active}}active{{/active}}">
@@ -18,11 +18,11 @@
                                 </div>
                             {{/images}}
                         </div>
-                        <a class="carousel-control-prev" href="#images-{{id}}" role="button" data-slide="prev">
+                        <a class="carousel-control-prev" href="#images-{{id}}" role="button" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span class="sr-only">{{#str}}previous, local_ultimate_market{{/str}}</span>
                         </a>
-                        <a class="carousel-control-next" href="#images-{{id}}" role="button" data-slide="next">
+                        <a class="carousel-control-next" href="#images-{{id}}" role="button" data-bs-slide="next">
                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             <span class="sr-only">{{#str}}next, local_ultimate_market{{/str}}</span>
                         </a>
